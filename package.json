@@ -1,0 +1,16 @@
+{
+  "name": "signalk-services-to-signalk",
+  "version": "0.1.0",
+  "description": "Monitor local systemd services and publish their status to Signal K paths",
+  "main": "index.js",
+  "schema": "schema.json",
+  "keywords": [
+    "signalk-node-server-plugin",
+    "signalk",
+    "services",
+    "monitoring",
+    "systemd"
+  ],
+  "author": "HJF",
+  "license": "MIT"
+}
