@@ -1,8 +1,9 @@
 module.exports = function (app) {
+
   const plugin = {
     id: "signalk-services-to-signalk",
     name: "Services to Signal K",
-    description: "Monitor systemd services and publish status to Signal K paths optional signalk-notification"
+    description: "Monitor systemd services and publish status to Signal K paths optional signalk-notification",
 
     schema: {
       type: "object",

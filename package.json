@@ -1,6 +1,6 @@
 {
   "name": "signalk-services-to-signalk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Monitor local systemd services and publish their status to Signal K paths optional notifications",
   "main": "index.js",
     "scripts": {
