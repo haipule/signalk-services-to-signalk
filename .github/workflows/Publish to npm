@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - 'v*'  # Wird bei Tags wie v1.0.0, v2.3.4 etc. ausgelöst
-
+  workflow_dispatch:  # Erlaubt manuelles Starten über GitHub UI
 jobs:
   publish:
     runs-on: ubuntu-latest
