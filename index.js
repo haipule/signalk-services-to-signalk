@@ -1,5 +1,4 @@
 module.exports = function (app) {
-
   const plugin = {
     id: "signalk-services-to-signalk",
     name: "Services to Signal K",
