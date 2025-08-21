@@ -1,10 +1,9 @@
 name: Publish to npm
 
 on:
-  # für Tags:
-   push:
-     tags:
-       - 'v*.*.*'
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   publish:
@@ -21,7 +20,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install    # ← GEÄNDERT: von npm ci zu npm install
 
       - name: Publish to npm
         run: npm publish
