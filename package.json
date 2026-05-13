@@ -1,6 +1,6 @@
 {
   "name": "signalk-services-to-signalk",
-  "version": "0.2.0",
+  "version": "1.0.1",
   "description": "Monitor local systemd services and publish their status to Signal K paths optional notifications",
   "main": "index.js",
   "scripts": {
@@ -14,11 +14,11 @@
     "monitoring",
     "systemd"
   ],
-  "author": "hjf-haipule",
-  "license": "CC-BY-NC-4.0",
+  "author": "haipule",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/haipulesignalk-services-tosignalk.git"
+    "url": "https://github.com/haipule/signalk-services-to-signalk.git"
   },
   "bugs": {
     "url": "https://github.com/haipule/signalk-services-to-signalk/issues"

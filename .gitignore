@@ -1,0 +1,33 @@
+# Node
+node_modules/
+
+# npm package archives
+*.tgz
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# SignalK local runtime/config
+plugin-config-data/
+data/
+cache/
+
+# Optional test/dev files
+public/index.bak
+
+#npm token
+.npmrc
+ 
+# deploy
+deploy-to-pi.sh
