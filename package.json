@@ -1,6 +1,6 @@
 {
   "name": "signalk-services-to-signalk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Signal K server plugin to monitor local systemd services and publish their status to Signal K paths with optional notifications.",
   "main": "index.js",
   "scripts": {
