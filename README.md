@@ -1,61 +1,65 @@
 # signalk-services-to-signalk
 
-Signal K server plugin to monitor local `systemd` services and publish their status to Signal K paths.
-
-The plugin can optionally create Signal K notifications when a monitored service is not running.
-
-## Features
-
-- Monitors local Linux `systemd` services
-- Publishes service status to Signal K
-- Optional Signal K notifications
-- Useful for watchdog-style monitoring of services such as:
-  - Signal K
-  - Node-RED
-  - InfluxDB
-  - Grafana
-  - custom boat services
+Signal K server plugin that monitors local `systemd` services and publishes their current state to Signal K. It can optionally raise a standard Signal K notification when a service is not active and clear that notification after recovery.
 
 ## Requirements
 
+- Linux with `systemd`
 - Signal K server
-- Linux system with `systemd`
-- Node.js environment used by Signal K
+- Node.js 20 or newer
 
 ## Installation
 
-### From npm
+Install the plugin from the Signal K App Store, or from the Signal K configuration directory:
 
 ```bash
 cd ~/.signalk
 npm install signalk-services-to-signalk
 sudo systemctl restart signalk
-````
-### Activation
+```
 
-After installation:
+Then enable **Services to Signal K** under **Server → Plugin Config**.
 
-Open Signal K Admin UI
-Go to Server → Plugin Config
-Enable signalk-services-to-signalk
-Configure the services you want to monitor
-Restart Signal K if required
-Signal K output
+## Configuration
 
-The plugin publishes service information to Signal K paths.
+Each configured service has these settings:
 
-Example structure:
+- **Systemd Service Name:** Unit name passed to `systemctl is-active`, for example `nginx.service`.
+- **Signal K Output Path:** Relative path for the state. `{service}` is replaced with a safe identifier derived from the unit name.
+- **Enable Notifications:** Raise a notification while the service is not active.
+- **Notification Level:** `warn` or `alarm`.
 
-custom.services.<serviceName>.status
-custom.services.<serviceName>.active
-custom.services.<serviceName>.timestamp
+The polling interval is configured in seconds and has a minimum of five seconds.
 
-Exact paths depend on the plugin configuration.
+### Example
 
-### Notifications
+For `nginx.service`, the default paths are:
 
-If enabled, the plugin can create Signal K notifications when a monitored service is inactive or failed.
+```text
+environment.services.nginx.status
+notifications.system.services.nginx
+```
 
-Example use case:
+The status value is the state returned by `systemctl is-active`, such as `active`, `inactive`, `failed`, `activating`, or `unknown`.
 
-notifications.system.services.<serviceName>
+Notifications are emitted only when the state changes. When a failed service becomes active again, the notification is cleared with a `null` value as defined by the Signal K notification lifecycle.
+
+Older configurations whose output path starts with `self.` remain supported; the unnecessary prefix is removed before publishing the delta.
+
+## Development
+
+```bash
+npm run check
+npm test
+npm pack --dry-run
+```
+
+The test suite uses a fake `systemctl` process and does not change services on the development machine.
+
+## Security
+
+Service names are passed to `systemctl` as arguments without invoking a shell. Names containing whitespace, slashes, shell operators, or other unsupported characters are rejected.
+
+## License
+
+MIT
