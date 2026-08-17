@@ -4,8 +4,9 @@
   "description": "Signal K server plugin to monitor local systemd services and publish their status to Signal K paths with optional notifications.",
   "main": "index.js",
   "scripts": {
-    "check": "node -c index.js",
-    "start": "node index.js"
+    "check": "node --check index.js && node --check test/plugin.test.js",
+    "test": "node --test",
+    "prepublishOnly": "npm run check && npm test"
   },
   "keywords": [
     "signalk-node-server-plugin",
@@ -18,9 +19,12 @@
   ],
   "author": "haipule",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "files": [
     "index.js",
-    "public",
+    "CHANGELOG.md",
     "README.md",
     "LICENSE",
     "package.json"
