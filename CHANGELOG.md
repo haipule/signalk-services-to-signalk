@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 - 2026-08-16
 
 - Run `systemctl` without a shell and validate configured service names.
 - Publish service states to consistent Signal K paths.
